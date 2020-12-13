@@ -1,0 +1,21 @@
+.producto{
+    margin-top:40px;
+    margin-bottom:40px;
+    text-align: -webkit-center;
+}
+
+.header-img{
+    width: 100%;
+}
+
+.all{
+    background-color: white;
+}
+
+.image{
+    width: 70%;
+}
+
+footer{
+    color:white;
+}
