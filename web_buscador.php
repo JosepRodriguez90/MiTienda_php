@@ -82,14 +82,15 @@ header("Content-Type: text/html;charset=utf-8");
         </div>
     </nav>  
 
-    <div class="ordenar float-right col-lg-3 col-md-4 col-sm-6 col-xs-12">
-        <select class="form-control">
-            <option>Ordenar por defecto</option>
-            <option>Ordenar por precio</option>
-            <option>Ordenar por categoria</option>
-        </select>
+    <div class="container-fluid">
+        <div class="ordenar col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <select class="form-control">
+                <option>Ordenar por defecto</option>
+                <option>Ordenar por precio</option>
+                <option>Ordenar por categoria</option>
+            </select>
+        </div>
     </div>
-
 </header>
 
 <body>
