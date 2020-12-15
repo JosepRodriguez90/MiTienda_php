@@ -30,18 +30,17 @@ header("Content-Type: text/html;charset=utf-8");
 	$instruccion = "select count(*) as cuantos from profesores where nick = '$nick'";
 	$resultado = mysqli_query($con, $instruccion);
 
-	while ($fila=mysqli_fetch_row($resultado)) {
+	while ($fila = $resultado->fetch_array()) {
 		$numero=$fila["cuantos"];
 	}
-
 	if($numero==0){
 		echo "El usuario no existe";
 	}
 	else{
-	$instruccion = "select password as cuantos from profesores where nick = '$nick'";
-	$resultado = mysqli_query($con, $instruccion);
-
-	while ($fila=mysqli_fetch_row($resultado)) {
+		$instruccion = "select password as cuantos from usuarios where nick = '$nick'";
+		$resultado = mysqli_query($con, $instruccion);
+		
+	while ($fila = $resultado->fetch_array()) {
 		$password2=$fila["cuantos"];
 	}
 

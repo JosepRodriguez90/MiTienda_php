@@ -103,11 +103,16 @@ header("Content-Type: text/html;charset=utf-8");
 
 			while($fila=mysqli_fetch_array($resultados, MYSQL_ASSOC)){
 
-				echo $fila['nombre'];
-				echo "  -  ";
-				echo $fila['precio'] . "€";
-				echo "<br>" . "<br>";
+                if (strcmp($fila['nombre'], "Proteina olymp 1kg (DBZ Limited edition)") == 0){
+                    echo "<h6>" . $fila['nombre'] . "</h6>";
+                    echo "<h5 class='text-secondary'><strong>" . $fila['precio'] . "€" . "</strong></h5>";
+                    echo "<br>" . "<br>";
 
+                } else{
+                    echo "<h6>" . $fila['nombre'] . "</h6>";
+                    echo "<h5 class='text-secondary'><strong>" . $fila['precio'] . "€" . "</strong></h5>";
+                    echo "<br>" . "<br>";
+                }
 
 				$c++;
 			}
