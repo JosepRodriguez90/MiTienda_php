@@ -1,5 +1,7 @@
 <?php
-	
+
+@session_start();
+
 header("Content-Type: text/html;charset=utf-8");
 
 
@@ -36,9 +38,9 @@ header("Content-Type: text/html;charset=utf-8");
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="web.css">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>practica7</title>
 </head>
 
@@ -50,7 +52,7 @@ header("Content-Type: text/html;charset=utf-8");
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="web.html">Tienda</a>
+        <a class="navbar-brand" href="web.php">Tienda</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
@@ -95,34 +97,31 @@ header("Content-Type: text/html;charset=utf-8");
 
 <body>
 
-    <div class="container all">
-	  
-		<?php
+    <div class="container all p-3 my-3">
+        <div class="row">
+            <?php
 
-			echo "<br><br>";
 
-			while($fila=mysqli_fetch_array($resultados, MYSQL_ASSOC)){
+                while($fila=mysqli_fetch_array($resultados, MYSQL_ASSOC)){
 
-                if (strcmp($fila['nombre'], "Proteina olymp 1kg (DBZ Limited edition)") == 0){
-                    echo "<h6>" . $fila['nombre'] . "</h6>";
-                    echo "<h5 class='text-secondary'><strong>" . $fila['precio'] . "€" . "</strong></h5>";
-                    echo "<br>" . "<br>";
 
-                } else{
-                    echo "<h6>" . $fila['nombre'] . "</h6>";
-                    echo "<h5 class='text-secondary'><strong>" . $fila['precio'] . "€" . "</strong></h5>";
-                    echo "<br>" . "<br>";
+                                echo "<div class='producto col-xs-12 col-sm-6 col-md-3'>" . "<img src='data:image/jpg; base64," . base64_encode($fila['imagen']) . "'>" . " 
+                                    <h6>" . $fila['nombre'] ."</h6>
+                                    <h5 class='text-secondary'><strong>" . $fila['precio'] . "€</strong></h5>
+                                    <button type='button' class='btn btn-danger'>Añadir a la cesta</button> 
+                                </div>";
+
+
+                    $c++;
                 }
 
-				$c++;
-			}
 
-			if($c==0){
-				echo "No se encuentra el producto.<br><br>";
-			}
+                if($c==0){
+                    echo "No se encuentra el producto.<br><br>";
+                }
 
-		?>
-
+            ?>
+        </div>
 	</div>
 
 

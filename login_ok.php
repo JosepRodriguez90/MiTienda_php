@@ -1,9 +1,5 @@
 <?php
 	
-session_start();
-
-$logueado=0;
-	
 header("Content-Type: text/html;charset=utf-8");
 
 
@@ -27,47 +23,47 @@ header("Content-Type: text/html;charset=utf-8");
 		//echo "Se ha conectado a la base de datos" . "<br>";
 	}
 	
-	$instruccion = "select count(*) as cuantos from profesores where nick = '$nick'";
+	$instruccion = "select count(*) as cuantos from usuarios where nick = '$nick'";
 	$resultado = mysqli_query($con, $instruccion);
 
-	while ($fila = $resultado->fetch_array()) {
+	while ($fila = $resultado->fetch_assoc()) {
 		$numero=$fila["cuantos"];
 	}
 	if($numero==0){
-		echo "El usuario no existe";
+		echo "<script>alert('El usuario no existe');</script>";
+		include_once("login.html");
 	}
 	else{
 		$instruccion = "select password as cuantos from usuarios where nick = '$nick'";
 		$resultado = mysqli_query($con, $instruccion);
 		
-	while ($fila = $resultado->fetch_array()) {
+	while ($fila = $resultado->fetch_assoc()) {
 		$password2=$fila["cuantos"];
 	}
 
 	/////////////////
 
 	if (!strcmp($password2 , $password) == 0){
-			echo "Contraseña incorrecta";
-	}
-	
-	else{
-		echo "Login OK";
+			echo "<script>alert('Contraseña incorrecta');</script>";
+			include_once("login.html");
+
+	}else{
+
+		//echo "Login OK";
 		$_SESSION["nick_logueado"]=$nick;
+
 		?> 
 		
-		<a href="web.html"></a>
+		<a href="web.php">Acceder a la web SuplementosJosep</a>
 		
 		<?php
 		
 		
 		$logueado=1;
+		
 	}
 	}
 	
-	
-
-
-
 
 
 ?>

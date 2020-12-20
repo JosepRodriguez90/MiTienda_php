@@ -2,40 +2,52 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="web.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- /Bootstrap --> 	
 </head>
-<body background="Fondo2.png" style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+
+<header>
+
+
+    <div>
+        <img src="imagenes/login_fondo.jpg" alt="" class="header-img">
+    </div>
+
+ 
+	<div class="bg-dark container-fluid">
+		<span class="bienvenido"><strong>*Login</strong></span>
+	</div>
+
+
+</header>
+
+<body>
 <div class="container">
   <div class="row">
-      <div class="col-3"></div>
           <div class="col-6">
-	<h1 align="center"> Login </h1>
-	<br>
+				<h1 align="center"> Login </h1>
+				<br>
 
-	<form action="login_ok.php" method = "post">
-	<table  class="table table-hover">
-	<tr>
-		<td>Nick: </td>
-		<td><input type="text" name="nick" /></td>
-		<td></td>
-	</tr>
-	<tr>
-		<td>Contraseña: </td>
-		<td><input type="password" name="password" /></td>
-		<td></td>
- 	</tr>	
-		<td></td>
-		 <td><input type="submit" value="Entrar"/></td>
-		<td>No tengo cuenta (<a href="register.html">registrarme</a>)</td>
-	</table>
-	</form>
+				<form action="login_ok.php" method = "post">
+				<table  class="table table-hover">
+				<tr>
+					<td>Nick: </td>
+					<td><input type="text" name="nick" /></td>
+					<td></td>
+				</tr>
+				<tr>
+					<td>Contraseña: </td>
+					<td><input type="password" name="password" /></td>
+					<td></td>
+				</tr>	
+					<td></td>
+					<td><input class="btn btn-dark" type="submit" value="Entrar"/></td>
+					<td>No tengo cuenta (<a href="register.html">registrarme</a>)</td>
+				</table>
+				</form>
 			</div>
-		<div class="col-3"></div>
 	</div>
 </div>
 </body>

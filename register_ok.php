@@ -2,12 +2,9 @@
 	
 header("Content-Type: text/html;charset=utf-8");
 
-
-if (isset($_POST["nick"]))
-{
 	$nick = $_POST["nick"];
 	$password = $_POST["password"];
-
+	$passwordRepit = $_POST["passwordRepit"];
 
 	$servidor="localhost";
 	$usuario="root";
@@ -25,42 +22,56 @@ if (isset($_POST["nick"]))
 	else
 	{
 		mysqli_set_charset ($con, "utf8");
-		echo "Se ha conectado a la base de datos"."<br>";
+		//echo "Se ha conectado a la base de datos"."<br>";
 	}
 	//////////////////////////////////////
 	
 	//Inserción de datos
 	
-	//Primero compruebo si el nick existe
-	$instruccion = "select count(*) as cuantos from usuarios where nick = '$nick'";
-	$res = mysqli_query($con, $instruccion);
-	$datos = mysqli_fetch_assoc($res);
-	
+	if (!strcmp($passwordRepit , $password) == 0){
+		echo "<script>alert('Contraseña incorrecta');</script>";
+		include_once("register.html");
 
-	if ($datos['cuantos'] == 0)
-	{
-		$instruccion = "insert into usuarios values ('$nick','$password')";
+	}else{
+
+			//Primero compruebo si el nick existe
+		$instruccion = "select count(*) as cuantos from usuarios where nick = '$nick'";
 		$res = mysqli_query($con, $instruccion);
-		if (!$res) 
+		$datos = mysqli_fetch_assoc($res);
+		
+
+		if ($datos['cuantos'] == 0)
 		{
-			die("No se ha pordido crear el usuario");
+
+			$passHash = password_hash($password, PASSWORD_BCRYPT); //encriptar pass
+
+			$instruccion = "insert into usuarios values ('$nick','$passHash')";
+			$res = mysqli_query($con, $instruccion);
+			if (!$res) 
+			{
+				die("No se ha pordido crear el usuario");
+			}
+			else
+			{
+				echo "<script>alert('Usuario creado correctamente');</script>";
+				include_once("login.html");
+			}
 		}
 		else
 		{
-			//echo "Usuario creado";
-			//me lleva al login para que pruebe mi contraseña
-			echo "<script>alert('Usuario creado correctamente');</script>";
-			include_once("login.html");
+			if(strcmp($nick, "") == 0){
+				echo "<script>alert('No se puede introducir un nick en blanco');</script>";
+				include_once("register.html");
+				
+			}else 
+			{
+				echo "<script>alert('El nick $nick no está disponible');</script>";
+				include_once("register.html");
+			}
+
 		}
-	}
-	else
-	{
-		echo "El nick $nick no está disponible";
+
 	}
 
-}
-else 
-{
-	echo ("ERROR: No se puede introducir un nick en blanco");
-}
+
 ?>

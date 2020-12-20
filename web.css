@@ -23,3 +23,7 @@ footer{
 .ordenar{
     margin: 10px;
 }
+
+span.bienvenido {
+    color: white;
+}

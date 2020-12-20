@@ -1,18 +1,33 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/bootstrap-theme.css">
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Bootstrap -->
+	<link rel="stylesheet" type="text/css" href="web.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <!-- /Bootstrap --> 	
 </head>
-<body background="Fondo2.png" style="background-repeat: no-repeat; background-attachment: fixed; background-size: cover;">
+
+
+<!-- header -->
+<header>
+
+
+    <div>
+        <img src="imagenes/registro_fondo.jpg" alt="" class="header-img">
+    </div>
+
+ 
+	<div class="bg-dark container-fluid">
+		<span class="bienvenido"><strong>*Registro</strong></span>
+	</div>
+
+
+</header>
+
+<body>
 <div class="container">
   <div class="row">
-      <div class="col-3"></div>
           <div class="col-6">
 	<h1 align="center"> Registro </h1>
 	<br>
@@ -31,16 +46,15 @@
  	</tr>	
 	<tr>
 		<td>Repetir contraseña: </td>
-		<td><input type="password" name="password" /></td>
+		<td><input type="password" name="passwordRepit" /></td>
 		<td></td>
  	</tr>
 		<td></td>
- 		<td><input type="submit" value="Crear cuenta"/></td>
+ 		<td><input type="submit" class="btn btn-dark" value="Crear cuenta"/></td>
 		<td>Ya tengo cuenta (<a href="login.html">login</a>)</td>
 	</table>
 	</form>
 			</div>
-		<div class="col-3"></div>
 	</div>
 </div>
 </body>
