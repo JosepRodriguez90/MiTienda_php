@@ -3,6 +3,7 @@
 header("Content-Type: text/html;charset=utf-8");
 
 	$nick = $_POST["nick"];
+	$email = $_POST["email"];
 	$password = $_POST["password"];
 	$passwordRepit = $_POST["passwordRepit"];
 
@@ -25,15 +26,14 @@ header("Content-Type: text/html;charset=utf-8");
 		//echo "Se ha conectado a la base de datos"."<br>";
 	}
 	//////////////////////////////////////
-	
-	//Inserción de datos
+
 	
 	if (!strcmp($passwordRepit , $password) == 0){
 		echo "<script>alert('Contraseña incorrecta');</script>";
 		include_once("register.html");
 
 	}else{
-
+			//Inserción de datos
 			//Primero compruebo si el nick existe
 		$instruccion = "select count(*) as cuantos from usuarios where nick = '$nick'";
 		$res = mysqli_query($con, $instruccion);
@@ -42,10 +42,7 @@ header("Content-Type: text/html;charset=utf-8");
 
 		if ($datos['cuantos'] == 0)
 		{
-
-			$passHash = password_hash($password, PASSWORD_BCRYPT); //encriptar pass
-
-			$instruccion = "insert into usuarios values ('$nick','$passHash')";
+			$instruccion = "insert into usuarios values ('$nick','$password','$email')";
 			$res = mysqli_query($con, $instruccion);
 			if (!$res) 
 			{

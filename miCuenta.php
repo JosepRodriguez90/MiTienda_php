@@ -1,7 +1,5 @@
 <?php
 
-error_reporting(0);  //no lanza mensaje de error, es para ocultar el error de que aparezce todo en la misma pagina (video php num. 9)
-
 @session_start();
 $nickLog=$_SESSION["nick_logueado"];
 
@@ -13,7 +11,7 @@ header("Content-Type: text/html;charset=utf-8");
 	$bd="test";	
 
     $value=1;
-    $c=0;
+    $c=1;
 
 	$conexion = mysqli_connect($servidor, $usuario, $contraseña, $bd) or die(mysql_error());
 	
@@ -77,100 +75,63 @@ header("Content-Type: text/html;charset=utf-8");
 
             </ul>
 
-            <?php
-
-                $mipag=$_SERVER['PHP_SELF'];
-                
-                $mibusqueda=$_GET['buscar'];
-
-                echo ("<form class='form-inline' action='" . $mipag . "' method = 'GET'>
-                        <input class='form-control mr-sm-2' type='text' placeholder='Nombre producto' aria-label='Search' name='buscar'>
-                        <button class='btn btn-primary' type='submit'>
-                            <svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='currentColor' class='bi bi-search' viewBox='0 0 16 16'>
-                                <path fill-rule='evenodd' d='M10.442 10.442a1 1 0 0 1 1.415 0l3.85 3.85a1 1 0 0 1-1.414 1.415l-3.85-3.85a1 1 0 0 1 0-1.415z'></path>
-                                <path fill-rule='evenodd' d='M6.5 12a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11zM13 6.5a6.5 6.5 0 1 1-13 0 6.5 6.5 0 0 1 13 0z'></path>
-                            </svg>
-                            <span class='visually-hidden'>Buscar</span>
-                        </button>
-                    </form>");
-
-            ?>
 
         </div>
     </nav>  
 
-<?php
-
-    echo ("<form class='form-inline' action='" . $mipag . "' method = 'GET'>
-            <div class='container-fluid'>
-                <div class='ordenar col-lg-3 col-md-4 col-sm-6 col-xs-12'>
-                    <select class='form-control' name='ordenar'>
-                        <option value='precio'>Ordenar por precio</option>
-                        <option value='categoria'>Ordenar por categoria</option>
-                    </select>
-                    <input class='btn btn-light ' type='submit' value='Ordenar!' > 
-                </div>
-                
-            </div>
-            
-        </form>");
-
-        $seleccionado=$_GET["ordenar"]; 
-?>
 </header>
-
 
 <body>
 
-    <div class="container all p-3 my-3">
-        <div class="row">
-            <?php
 
-                if($mibusqueda!=NULL){
-                    $consultaBuscar="SELECT * FROM productos WHERE NOMBRE LIKE '%$mibusqueda%'";
-
-                    $resultados=mysqli_query($conexion, $consultaBuscar);
-
-                }elseif($seleccionado == 'precio'){
-                    $ordenarPrecio="SELECT * FROM productos order by precio";
-
-                    $resultados=mysqli_query($conexion, $ordenarPrecio);
-
-                }elseif($seleccionado == 'categoria'){
-                    $ordenarPrecio="SELECT * FROM productos order by categoria";
-
-                    $resultados=mysqli_query($conexion, $ordenarPrecio);
-
-                }else{
-                    $consultaAll="SELECT * FROM productos order by nombre DESC";
-
-                    $resultados=mysqli_query($conexion, $consultaAll);
-                }
+<?php
 
 
-                while($fila=mysqli_fetch_array($resultados, MYSQL_ASSOC)){
+$consulta="SELECT nick, email, password FROM usuarios WHERE nick='$nickLog'";
+
+$resultados=mysqli_query($conexion, $consulta);
+
+$fila=mysqli_fetch_row($resultados);
 
 
-                    echo "<div class='producto col-xs-12 col-sm-6 col-md-3'>" . "<img src='data:image/jpg; base64," . base64_encode($fila['imagen']) . "'>" . " 
-                        <h6>" . $fila['nombre'] ."</h6>
-                        <h5 class='text-secondary'><strong>" . $fila['precio'] . "€</strong></h5>
-                        <button type='submit' class='btn btn-success'>Añadir a la cesta</button> 
-                    </div>";
-                    
-                    $c++;
-                }
 
+echo 
+("<form class='form-inline' action='miCuenta1.php' method = 'GET'>
+<div class='container pt-4'>
 
-                if($c==0){
-                    echo "No se encuentra el producto.<br><br>";
-                }
+    <div class='input-group mb-3'>
+        <h5>Modificar cuenta de: ".$fila[0]."
+    </div>
 
-            ?>
+    <div class='input-group mb-3'>
+        <div class='input-group-prepend'>
+            <span class='input-group-text' id='inputGroup-sizing-default'>Contraseña</span>
         </div>
-	</div>
+        <input type='text' class='form-control' placeholder='Recipient's username' value='" . $fila[2] ."' aria-label='Recipient's username' aria-describedby='basic-addon2' name='contraseña'>
+    </div>
+
+    <div class='input-group mb-3'>
+        <div class='input-group-prepend'>
+            <span class='input-group-text' id='inputGroup-sizing-default'>Email</span>
+        </div>
+        <input type='text' class='form-control' placeholder='Recipient's username' value='" . $fila[1] ."' aria-label='Recipient's username' aria-describedby='basic-addon2' name='email'>
+    </div>
+
+    <div class='input-group-append'>
+        <input class='btn btn-dark' type='submit' value='Enviar'>
+    </div>
+</div>
 
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+</form>
+<br><br><br><br><br><br><br><br><br><br><br><br>");
+
+
+
+?>
+
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 
@@ -185,5 +146,3 @@ header("Content-Type: text/html;charset=utf-8");
     </div>
   
 </footer>
-
-  

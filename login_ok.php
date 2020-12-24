@@ -50,6 +50,7 @@ header("Content-Type: text/html;charset=utf-8");
 	}else{
 
 		//echo "Login OK";
+		@session_start();
 		$_SESSION["nick_logueado"]=$nick;
 
 		?> 
