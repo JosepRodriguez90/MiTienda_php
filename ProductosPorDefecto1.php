@@ -31,7 +31,7 @@ header("Content-Type: text/html;charset=utf-8");
 <?php
 
 
-$ordenar="SELECT * FROM productos";
+$ordenar="SELECT * FROM productos WHERE id=1";
 
 $resultados=mysqli_query($conexion, $ordenar);
 
@@ -61,8 +61,6 @@ $precio=$fila[2];
 		SET cantidad = cantidad+1
 		WHERE nombre_producto='$nombre' AND cliente='$nickLog'";
 		$resultado = mysqli_query($conexion, $instruccion);
-
-		echo "<script>alert('El producto añadido a la cesta!');</script>";
 
 	}
 

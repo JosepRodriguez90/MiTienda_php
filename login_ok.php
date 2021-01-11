@@ -43,28 +43,39 @@ header("Content-Type: text/html;charset=utf-8");
 
 	/////////////////
 
-	if (!strcmp($password2 , $password) == 0){
+	if(strcmp($nick, "") == 0){
+		echo "<script>alert('No se puede introducir un nick en blanco');</script>";
+		include_once("login.html");
+		
+	}else{
+
+		if (!strcmp($password2 , $password) == 0){
 			echo "<script>alert('Contraseña incorrecta');</script>";
 			include_once("login.html");
 
-	}else{
+		}else{
 
-		//echo "Login OK";
-		@session_start();
-		$_SESSION["nick_logueado"]=$nick;
+			//echo "Login OK";
+			@session_start();
+			$_SESSION["nick_logueado"]=$nick;
 
-		?> 
-		
-		<a href="web.php">Acceder a la web SuplementosJosep</a>
-		
-		<?php
-		
-		
-		$logueado=1;
-		
-	}
+			?> 
+			
+			<script language="javascript">    
+			window.location.href='web.php';
+    		</script>
+			
+			<?php
+			
+			
+			$logueado=1;
+			
+		}
+		}
+
 	}
 	
 
 
 ?>
+

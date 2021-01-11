@@ -62,7 +62,7 @@ header("Content-Type: text/html;charset=utf-8");
 				
 			}else 
 			{
-				echo "<script>alert('El nick $nick no está disponible');</script>";
+				echo "<script>alert('Lo sentimos, el nick $nick ya existe...');</script>";
 				include_once("register.html");
 			}
 

@@ -44,11 +44,18 @@ header("Content-Type: text/html;charset=utf-8");
 <header>
 
 
-    <div class="container-fluid bg-danger">
-        <form action='logout.php'>
-            <input class="btn btn-danger" type="submit" name="sesionDestroy" value="Cerrar sesion"/>
-        </form>
+<div class="container-fluid bg-danger">
+        <button class="btn btn-danger" onClick="deslogear()" name="cerrarses" value="cerrarses">Cerrar sesión</button>
     </div>
+
+    <script language="javascript">      //utlitzem el llenguatge javascript
+    function deslogear()    //funcio que li pots ficar el nom que vulguis, fa que apareixi els botos aceptar i cancelar.
+    {
+        if(confirm("¿Esta seguro que desea cerrar sesión?!")){  //si confiarma va al logout.php
+            window.location.href='logout.php';
+        }
+    }
+    </script>
 
 
     <div>

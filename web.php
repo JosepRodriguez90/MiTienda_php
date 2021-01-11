@@ -1,6 +1,6 @@
 <?php
 
-   error_reporting(0); 
+    error_reporting(0); 
  //no lanza mensaje de error, es para ocultar el error de que aparezce todo en la misma pagina (video php num. 9)
 
 @session_start();
@@ -52,10 +52,17 @@ include 'ProductosPorDefecto.php';
 
 
     <div class="container-fluid bg-danger">
-        <form action='logout.php'>
-            <input class="btn btn-danger" type="submit" name="sesionDestroy" value="Cerrar sesion"/>
-        </form>
+        <button class="btn btn-danger" onClick="deslogear()" name="cerrarses" value="cerrarses">Cerrar sesión</button>
     </div>
+
+    <script language="javascript">      //utlitzem el llenguatge javascript
+    function deslogear()    //funcio que li pots ficar el nom que vulguis, fa que apareixi els botos aceptar i cancelar.
+    {
+        if(confirm("¿Esta seguro que desea cerrar sesión?!")){  //si confiarma va al logout.php
+            window.location.href='logout.php';
+        }
+    }
+    </script>
 
 
     <div>
@@ -71,13 +78,24 @@ include 'ProductosPorDefecto.php';
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
-                <li class="nav-item">
-                    <a class="nav-link" href="cesta.php"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M6.122.392a1.75 1.75 0 011.756 0l5.25 3.045c.54.313.872.89.872 1.514V7.25a.75.75 0 01-1.5 0V5.677L7.75 8.432v6.384a1 1 0 01-1.502.865L.872 12.563A1.75 1.75 0 010 11.049V4.951c0-.624.332-1.2.872-1.514L6.122.392zM7.125 1.69l4.63 2.685L7 7.133 2.245 4.375l4.63-2.685a.25.25 0 01.25 0zM1.5 11.049V5.677l4.75 2.755v5.516l-4.625-2.683a.25.25 0 01-.125-.216zm10.828 3.684a.75.75 0 101.087 1.034l2.378-2.5a.75.75 0 000-1.034l-2.378-2.5a.75.75 0 00-1.087 1.034L13.501 12H10.25a.75.75 0 000 1.5h3.251l-1.173 1.233z"></path></svg> Cesta</a>
-                </li>
 
-                <li class="nav-item">
-                    <a class="nav-link" href="miCuenta.php"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M10.5 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm.061 3.073a4 4 0 10-5.123 0 6.004 6.004 0 00-3.431 5.142.75.75 0 001.498.07 4.5 4.5 0 018.99 0 .75.75 0 101.498-.07 6.005 6.005 0 00-3.432-5.142z"></path></svg> Mi cuenta</a>
-                </li>
+                <?php
+                    if(strcmp($nickLog, "admin") == 0){
+                        echo '<li class="nav-item">
+                                <a class="nav-link" href="admin.php"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M6.5 5.5a4 4 0 112.731 3.795.75.75 0 00-.768.18L7.44 10.5H6.25a.75.75 0 00-.75.75v1.19l-.06.06H4.25a.75.75 0 00-.75.75v1.19l-.06.06H1.75a.25.25 0 01-.25-.25v-1.69l5.024-5.023a.75.75 0 00.181-.768A3.995 3.995 0 016.5 5.5zm4-5.5a5.5 5.5 0 00-5.348 6.788L.22 11.72a.75.75 0 00-.22.53v2C0 15.216.784 16 1.75 16h2a.75.75 0 00.53-.22l.5-.5a.75.75 0 00.22-.53V14h.75a.75.75 0 00.53-.22l.5-.5a.75.75 0 00.22-.53V12h.75a.75.75 0 00.53-.22l.932-.932A5.5 5.5 0 1010.5 0zm.5 6a1 1 0 100-2 1 1 0 000 2z"></path></svg> Admin</a>
+                              </li>';
+                    }else{
+
+                    echo   '<li class="nav-item">
+                            <a class="nav-link" href="cesta.php"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M6.122.392a1.75 1.75 0 011.756 0l5.25 3.045c.54.313.872.89.872 1.514V7.25a.75.75 0 01-1.5 0V5.677L7.75 8.432v6.384a1 1 0 01-1.502.865L.872 12.563A1.75 1.75 0 010 11.049V4.951c0-.624.332-1.2.872-1.514L6.122.392zM7.125 1.69l4.63 2.685L7 7.133 2.245 4.375l4.63-2.685a.25.25 0 01.25 0zM1.5 11.049V5.677l4.75 2.755v5.516l-4.625-2.683a.25.25 0 01-.125-.216zm10.828 3.684a.75.75 0 101.087 1.034l2.378-2.5a.75.75 0 000-1.034l-2.378-2.5a.75.75 0 00-1.087 1.034L13.501 12H10.25a.75.75 0 000 1.5h3.251l-1.173 1.233z"></path></svg> Cesta</a>
+                            </li>
+            
+                            <li class="nav-item">
+                                <a class="nav-link" href="miCuenta.php"><svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 16 16" width="16" height="16"><path fill-rule="evenodd" d="M10.5 5a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0zm.061 3.073a4 4 0 10-5.123 0 6.004 6.004 0 00-3.431 5.142.75.75 0 001.498.07 4.5 4.5 0 018.99 0 .75.75 0 101.498-.07 6.005 6.005 0 00-3.432-5.142z"></path></svg> Mi cuenta</a>
+                            </li>';
+
+                    }
+                ?>
 
             </ul>
 
@@ -145,15 +163,18 @@ include 'ProductosPorDefecto.php';
 
                     $resultados=mysqli_query($conexion, $ordenarPrecio);
 
+                }elseif(strcmp($nickLog, 'admin') == 0){    //si es l'administrador tambe mostra els productes per categories.
+                    $ordenarPrecio="SELECT * FROM productos order by categoria";
+
+                    $resultados=mysqli_query($conexion, $ordenarPrecio);
                 }else{
 
                     $ordenarPrecio="SELECT * FROM productos";
-
                     $resultados=mysqli_query($conexion, $ordenarPrecio);
 
                     productosPorDefecto();
-
                     $ProductosPorDefecto=true;
+            
                 }
 
 
@@ -164,9 +185,16 @@ include 'ProductosPorDefecto.php';
 
                         echo "<div class='producto col-xs-12 col-sm-6 col-md-3'>" . "<img src='data:image/jpg; base64," . base64_encode($fila['imagen']) . "'>" . " 
                             <h6>" . $fila['nombre'] ."</h6>
-                            <h5 class='text-secondary'><strong>" . $fila['precio'] . "€</strong></h5>
-                            <button type='submit' class='btn btn-success'>Añadir a la cesta</button> 
-                        </div>";
+                            <h5 class='text-secondary'><strong>" . $fila['precio'] . "€</strong></h5>";
+                            
+                            if(!strcmp($nickLog, 'admin') == 0){    //si es el admin no li surt el boto comprar ja que es el venedor.
+                                echo "<button type='submit' class='btn btn-success'>Añadir a la cesta</button> ";
+                            } 
+                            
+                            ?>
+                        </div>
+                            <?php
+
                         
                         $c++;
                     }
