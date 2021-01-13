@@ -51,9 +51,7 @@ header("Content-Type: text/html;charset=utf-8");
 
 
     $ordenar="SELECT * FROM productos WHERE id=1";
-
     $resultados=mysqli_query($conexion, $ordenar);
-    
     $fila=mysqli_fetch_row($resultados);
 
 
@@ -65,15 +63,63 @@ header("Content-Type: text/html;charset=utf-8");
 
         echo 
         "<div class='producto col-xs-12 col-sm-6 col-md-3'>
-            <form class='form-inline' action='ProductosPorDefecto1.php'>
+            <form class='form-inline' method = 'post' action='ProductosPorDefecto1.php'>
                 <div class='producto col-12'>" . "<img src='data:image/jpg; base64," . base64_encode($imagen) . "'>" . " 
-                        <h6>$nombre</h6>
+                        <h6 nombre='nombre1'>$nombre</h6>
                         <h5 class='text-secondary'><strong>" . $precio . "€</strong></h5>
                     <button type='submit' class='btn btn-success'>Añadir a la cesta</button> 
                 </div>
 
             </form>
         </div>";
+
+
+        $ordenar1="SELECT * FROM productos WHERE id=2";
+        $resultados1=mysqli_query($conexion, $ordenar1);
+        $fila1=mysqli_fetch_row($resultados1);
+    
+    
+    
+        $nombre1=$fila1[1];
+        $precio1=$fila1[2];
+        $imagen1=$fila1[3];
+    
+    
+            echo 
+            "<div class='producto col-xs-12 col-sm-6 col-md-3'>
+                <form class='form-inline' method = 'post' action='ProductosPorDefecto1.php'>
+                    <div class='producto col-12'>" . "<img src='data:image/jpg; base64," . base64_encode($imagen1) . "'>" . " 
+                            <h6 nombre='nombre2'>$nombre1</h6>
+                            <h5 class='text-secondary'><strong>" . $precio1 . "€</strong></h5>
+                        <button type='submit' class='btn btn-success'>Añadir a la cesta</button> 
+                    </div>
+    
+                </form>
+            </div>";
+
+
+            $ordenar2="SELECT * FROM productos WHERE id=3";
+            $resultados2=mysqli_query($conexion, $ordenar2);
+            $fila2=mysqli_fetch_row($resultados2);
+        
+        
+        
+            $nombre2=$fila2[1];
+            $precio2=$fila2[2];
+            $imagen2=$fila2[3];
+        
+        
+                echo 
+                "<div class='producto col-xs-12 col-sm-6 col-md-3'>
+                    <form class='form-inline' method = 'post' action='ProductosPorDefecto1.php'>
+                        <div class='producto col-12'>" . "<img src='data:image/jpg; base64," . base64_encode($imagen2) . "'>" . " 
+                                <h6 nombre='nombre3'>$nombre2</h6>
+                                <h5 class='text-secondary'><strong>" . $precio2 . "€</strong></h5>
+                            <button type='submit' class='btn btn-success'>Añadir a la cesta</button> 
+                        </div>
+        
+                    </form>
+                </div>";
 
     }
 
