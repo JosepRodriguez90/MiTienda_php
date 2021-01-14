@@ -68,7 +68,7 @@ header("Content-Type: text/html;charset=utf-8");
     
         }
 
-    }elseif(!strcmp($nombre2 , 'Proteina 1kg olymp (DBZ limited)')){
+    }elseif(strcmp($nombre2 , 'Proteina 1kg olymp (DBZ limited)')){
 
         $ordenar="SELECT * FROM productos WHERE id=2";
         $resultados=mysqli_query($conexion, $ordenar);
@@ -101,7 +101,7 @@ header("Content-Type: text/html;charset=utf-8");
     
         }
 
-    }elseif(!strcmp($nombre3 , 'Glutamine 1kg met-rx')){
+    }elseif(strcmp($nombre3 , 'Glutamine 1kg met-rx')){
 
         $ordenar="SELECT * FROM productos WHERE id=3";
         $resultados=mysqli_query($conexion, $ordenar);
