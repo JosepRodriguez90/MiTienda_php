@@ -46,14 +46,14 @@ header("Content-Type: text/html;charset=utf-8");
     
     
     
-        $instruccion = "SELECT count(*) as cuantos from cesta where nombre_producto = '$nombre'";
+        $instruccion = "SELECT count(*) as cuantos from $nickLog where nombre_producto = '$nombre'";
         $resultado = mysqli_query($conexion, $instruccion);
     
         while ($fila = $resultado->fetch_assoc()) {
             $numero=$fila["cuantos"];
         }
         if($numero==0){
-            $instruccion = "INSERT INTO cesta (nombre_producto, precio, cantidad, cliente)
+            $instruccion = "INSERT INTO $nickLog (nombre_producto, precio, cantidad, cliente)
             VALUES ('$nombre','$precio',1,'$nickLog')";
             $resultado = mysqli_query($conexion, $instruccion);
     
@@ -61,7 +61,7 @@ header("Content-Type: text/html;charset=utf-8");
             
         }
         else{
-            $instruccion = "UPDATE cesta
+            $instruccion = "UPDATE $nickLog
             SET cantidad = cantidad+1
             WHERE nombre_producto='$nombre' AND cliente='$nickLog'";
             $resultado = mysqli_query($conexion, $instruccion);
@@ -86,7 +86,7 @@ header("Content-Type: text/html;charset=utf-8");
             $numero=$fila["cuantos"];
         }
         if($numero==0){
-            $instruccion = "INSERT INTO cesta (nombre_producto, precio, cantidad, cliente)
+            $instruccion = "INSERT INTO $nickLog (nombre_producto, precio, cantidad, cliente)
             VALUES ('$nombre','$precio',1,'$nickLog')";
             $resultado = mysqli_query($conexion, $instruccion);
     
@@ -94,7 +94,7 @@ header("Content-Type: text/html;charset=utf-8");
             
         }
         else{
-            $instruccion = "UPDATE cesta
+            $instruccion = "UPDATE $nickLog
             SET cantidad = cantidad+1
             WHERE nombre_producto='$nombre' AND cliente='$nickLog'";
             $resultado = mysqli_query($conexion, $instruccion);
@@ -112,14 +112,14 @@ header("Content-Type: text/html;charset=utf-8");
     
     
     
-        $instruccion = "SELECT count(*) as cuantos from cesta where nombre_producto = '$nombre'";
+        $instruccion = "SELECT count(*) as cuantos from $nickLog where nombre_producto = '$nombre'";
         $resultado = mysqli_query($conexion, $instruccion);
     
         while ($fila = $resultado->fetch_assoc()) {
             $numero=$fila["cuantos"];
         }
         if($numero==0){
-            $instruccion = "INSERT INTO cesta (nombre_producto, precio, cantidad, cliente)
+            $instruccion = "INSERT INTO $nickLog (nombre_producto, precio, cantidad, cliente)
             VALUES ('$nombre','$precio',1,'$nickLog')";
             $resultado = mysqli_query($conexion, $instruccion);
     
@@ -127,7 +127,7 @@ header("Content-Type: text/html;charset=utf-8");
             
         }
         else{
-            $instruccion = "UPDATE cesta
+            $instruccion = "UPDATE $nickLog
             SET cantidad = cantidad+1
             WHERE nombre_producto='$nombre' AND cliente='$nickLog'";
             $resultado = mysqli_query($conexion, $instruccion);
