@@ -30,39 +30,111 @@ header("Content-Type: text/html;charset=utf-8");
 
 <?php
 
-
-$ordenar="SELECT * FROM productos WHERE id=1";
-
-$resultados=mysqli_query($conexion, $ordenar);
-
-$fila=mysqli_fetch_row($resultados);
-               
-$nombre=$fila[1];
-$precio=$fila[2];
+    $nombre1 = $_POST["nombre1"];
+    $nombre2 = $_POST["nombre2"];
+    $nombre3 = $_POST["nombre3"];
 
 
+    if(strcmp($nombre1 , 'Proteina 1kg amix')){
 
-	$instruccion = "SELECT count(*) as cuantos from cesta where nombre_producto = '$nombre'";
-	$resultado = mysqli_query($conexion, $instruccion);
+        $ordenar="SELECT * FROM productos WHERE id=1";
+        $resultados=mysqli_query($conexion, $ordenar);
+        $fila=mysqli_fetch_row($resultados);
+                    
+        $nombre=$fila[1];
+        $precio=$fila[2];
+    
+    
+    
+        $instruccion = "SELECT count(*) as cuantos from cesta where nombre_producto = '$nombre'";
+        $resultado = mysqli_query($conexion, $instruccion);
+    
+        while ($fila = $resultado->fetch_assoc()) {
+            $numero=$fila["cuantos"];
+        }
+        if($numero==0){
+            $instruccion = "INSERT INTO cesta (nombre_producto, precio, cantidad, cliente)
+            VALUES ('$nombre','$precio',1,'$nickLog')";
+            $resultado = mysqli_query($conexion, $instruccion);
+    
+            echo "<script>alert('El producto añadido a la cesta!');</script>";
+            
+        }
+        else{
+            $instruccion = "UPDATE cesta
+            SET cantidad = cantidad+1
+            WHERE nombre_producto='$nombre' AND cliente='$nickLog'";
+            $resultado = mysqli_query($conexion, $instruccion);
+    
+        }
 
-	while ($fila = $resultado->fetch_assoc()) {
-		$numero=$fila["cuantos"];
-	}
-	if($numero==0){
-		$instruccion = "INSERT INTO cesta (nombre_producto, precio, cantidad, cliente)
-		VALUES ('$nombre','$precio',1,'$nickLog')";
-		$resultado = mysqli_query($conexion, $instruccion);
+    }elseif(!strcmp($nombre2 , 'Proteina 1kg olymp (DBZ limited)')){
 
-		echo "<script>alert('El producto añadido a la cesta!');</script>";
-		
-	}
-	else{
-		$instruccion = "UPDATE cesta
-		SET cantidad = cantidad+1
-		WHERE nombre_producto='$nombre' AND cliente='$nickLog'";
-		$resultado = mysqli_query($conexion, $instruccion);
+        $ordenar="SELECT * FROM productos WHERE id=2";
+        $resultados=mysqli_query($conexion, $ordenar);
+        $fila=mysqli_fetch_row($resultados);
+                    
+        $nombre=$fila[1];
+        $precio=$fila[2];
+    
+    
+    
+        $instruccion = "SELECT count(*) as cuantos from cesta where nombre_producto = '$nombre'";
+        $resultado = mysqli_query($conexion, $instruccion);
+    
+        while ($fila = $resultado->fetch_assoc()) {
+            $numero=$fila["cuantos"];
+        }
+        if($numero==0){
+            $instruccion = "INSERT INTO cesta (nombre_producto, precio, cantidad, cliente)
+            VALUES ('$nombre','$precio',1,'$nickLog')";
+            $resultado = mysqli_query($conexion, $instruccion);
+    
+            echo "<script>alert('El producto añadido a la cesta!');</script>";
+            
+        }
+        else{
+            $instruccion = "UPDATE cesta
+            SET cantidad = cantidad+1
+            WHERE nombre_producto='$nombre' AND cliente='$nickLog'";
+            $resultado = mysqli_query($conexion, $instruccion);
+    
+        }
 
-	}
+    }elseif(!strcmp($nombre3 , 'Glutamine 1kg met-rx')){
+
+        $ordenar="SELECT * FROM productos WHERE id=3";
+        $resultados=mysqli_query($conexion, $ordenar);
+        $fila=mysqli_fetch_row($resultados);
+                    
+        $nombre=$fila[1];
+        $precio=$fila[2];
+    
+    
+    
+        $instruccion = "SELECT count(*) as cuantos from cesta where nombre_producto = '$nombre'";
+        $resultado = mysqli_query($conexion, $instruccion);
+    
+        while ($fila = $resultado->fetch_assoc()) {
+            $numero=$fila["cuantos"];
+        }
+        if($numero==0){
+            $instruccion = "INSERT INTO cesta (nombre_producto, precio, cantidad, cliente)
+            VALUES ('$nombre','$precio',1,'$nickLog')";
+            $resultado = mysqli_query($conexion, $instruccion);
+    
+            echo "<script>alert('El producto añadido a la cesta!');</script>";
+            
+        }
+        else{
+            $instruccion = "UPDATE cesta
+            SET cantidad = cantidad+1
+            WHERE nombre_producto='$nombre' AND cliente='$nickLog'";
+            $resultado = mysqli_query($conexion, $instruccion);
+    
+        }
+    }
+
 
 	include_once("cesta.php");
 
