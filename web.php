@@ -186,11 +186,6 @@ include 'ProductosPorDefecto.php';
                         echo "<div class='producto col-xs-12 col-sm-6 col-md-3'>" . "<img src='data:image/jpg; base64," . base64_encode($fila['imagen']) . "'>" . " 
                             <h6>" . $fila['nombre'] ."</h6>
                             <h5 class='text-secondary'><strong>" . $fila['precio'] . "€</strong></h5>";
-                            
-                            if(!strcmp($nickLog, 'admin') == 0){    //si es el admin no li surt el boto comprar ja que es el venedor.
-                                echo "<button type='submit' class='btn btn-success'>Añadir a la cesta</button> ";
-                            } 
-                            
                             ?>
                         </div>
                             <?php
