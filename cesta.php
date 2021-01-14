@@ -105,7 +105,7 @@ header("Content-Type: text/html;charset=utf-8");
 <?php
 
 
-$cesta="SELECT * FROM cesta WHERE cliente='$nickLog'";
+$cesta="SELECT * FROM $nickLog";
 
 $resultados=mysqli_query($conexion, $cesta);
 
