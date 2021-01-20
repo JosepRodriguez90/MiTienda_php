@@ -52,7 +52,7 @@ $delete = "DELETE FROM buscar";
 
 $resdelete = mysqli_query($conexion, $delete);
 
-echo "<script>alert('Nuevo producto borrado con éxito!');</script>";
+echo "<script>alert('Producto borrado con éxito!');</script>";
 
 include_once("admin.php");
 

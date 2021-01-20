@@ -55,7 +55,7 @@ $delete = "DELETE FROM buscar";
 $resdelete = mysqli_query($conexion, $delete);
 
 
-echo "<script>alert('Nuevo producto modificado con éxito!');</script>";
+echo "<script>alert('Producto modificado con éxito!');</script>";
 
 include_once("admin.php");
 

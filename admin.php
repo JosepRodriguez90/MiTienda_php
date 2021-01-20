@@ -107,7 +107,7 @@ echo
     <div class='tab-content pt-3' id='nav-tabContent'>
       <div class='tab-pane fade show active' id='list-insertar' role='tabpanel' aria-labelledby='list-home-list'>
 
-            <form class='form-inline' action='admin1.php' method = 'GET'>
+            <form action='admin1.php' method='post' enctype='multipart/form-data'>
             <div class='container'>
             
                 <div class='input-group mb-3'>
@@ -137,13 +137,13 @@ echo
             
                 <div class='input-group'>
                     <div class='form-group'>
-                    <input type='file' class='textfield' name='imagen' id='exampleFormControlFile1' onchange='return verificationsAfterFieldChange('8c373fd1a64c1a3083fff348caf4b4ab', '1','blob')'>
+                    <input type='file' name='imagen'/>
                     </div>
                 </div>
-                <small id='emailHelp' class='form-text text-muted mb-3'>La imagen del producto tiene que ser inferior a 60KB</small>
+                <small id='emailHelp' class='form-text text-muted mb-3'>La imagen del producto tiene que ser inferior a 60KB y 180px por 180px</small>
 
                 <div class='input-group-append'>
-                    <input class='btn btn-dark' type='submit' value='Enviar'>
+                <input type='submit' class='btn btn-success' name='submit' value='Enviar'/>
                 </div>
             </div>
             </form>

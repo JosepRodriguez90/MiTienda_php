@@ -25,21 +25,32 @@ else
     //echo "Se ha conectado a la base de datos" . "<br>";
 }
 
-
-
-$nuevoNombre=$_GET['nombre'];
-$nuevoPrecio=$_GET['precio'];
-$nuevoImagen=$_GET['imagen'];
-$nuevoCategoria=$_GET['categoria'];
+//////////////////////////////////////////////////////////
 
 
 
-$instruccion = "INSERT INTO productos(id, nombre, precio, imagen, categoria) VALUES ('$id','$nuevoNombre','$nuevoPrecio','$nuevoImagen','$nuevoCategoria')";
+    $image = $_FILES['imagen']['tmp_name'];
+    $imgContent = addslashes(file_get_contents($image));
 
-$resultado = mysqli_query($conexion, $instruccion);
+    
+    $image = $_FILES['imagen']['tmp_name'];
+    $imgContent = addslashes(file_get_contents($image));
 
-echo "<script>alert('Nuevo producto añadido con éxito!');</script>";
+    $nuevoNombre=$_POST['nombre'];
+    $nuevoPrecio=$_POST['precio'];
+    $nuevoCategoria=$_POST['categoria'];
 
-include_once("web.php");
+
+
+    $instruccion = "INSERT INTO productos(id, nombre, precio, imagen, categoria) VALUES ('$id','$nuevoNombre','$nuevoPrecio','$imgContent','$nuevoCategoria')";
+
+    $resultado = mysqli_query($conexion, $instruccion);
+
+    
+
+    echo "<script>alert('Nuevo producto añadido con éxito!');</script>";
+
+    include_once("web.php");
+
 
 ?>

@@ -44,6 +44,21 @@ header("Content-Type: text/html;charset=utf-8");
 		{
 			$instruccion = "insert into usuarios values ('$nick','$password','$email')";
 			$res = mysqli_query($con, $instruccion);
+
+
+				$mi_tabla= "CREATE TABLE $nick(
+				id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+				nombre_producto VARCHAR(50) NOT NULL,
+				precio INT(60) NOT NULL,
+				cantidad INT(50),
+				)";
+
+				if (mysqli_query($con, $mi_tabla)) {
+					echo "Tabla creada con exito";
+				} else {
+					echo "Error al crear la tabla: " . mysqli_error($con);
+				}
+
 			if (!$res) 
 			{
 				die("No se ha pordido crear el usuario");
