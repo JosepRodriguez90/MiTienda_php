@@ -31,7 +31,7 @@ header("Content-Type: text/html;charset=utf-8");
 <?php
 
 
-$ordenar="SELECT * FROM productos WHERE id=1";
+$ordenar="SELECT * FROM productos WHERE nombre ='Proteina amix 5k+ creatina 300gr'";
 
 $resultados=mysqli_query($conexion, $ordenar);
 
