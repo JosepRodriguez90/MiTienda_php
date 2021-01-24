@@ -1,6 +1,7 @@
 <!-- INSERTAR PRODUCTO -->
 <?php
 
+error_reporting(0); 
 @session_start();
 $nickLog=$_SESSION["nick_logueado"];
 
@@ -27,30 +28,43 @@ else
 
 //////////////////////////////////////////////////////////
 
-
-
-    $image = $_FILES['imagen']['tmp_name'];
-    $imgContent = addslashes(file_get_contents($image));
-
-    
-    $image = $_FILES['imagen']['tmp_name'];
-    $imgContent = addslashes(file_get_contents($image));
-
     $nuevoNombre=$_POST['nombre'];
-    $nuevoPrecio=$_POST['precio'];
-    $nuevoCategoria=$_POST['categoria'];
 
 
+    if($nombre!=""){
 
-    $instruccion = "INSERT INTO productos(id, nombre, precio, imagen, categoria) VALUES ('$id','$nuevoNombre','$nuevoPrecio','$imgContent','$nuevoCategoria')";
-
-    $resultado = mysqli_query($conexion, $instruccion);
-
+        $image = $_FILES['imagen']['tmp_name'];
+        $imgContent = addslashes(file_get_contents($image));
     
+        
+        $image = $_FILES['imagen']['tmp_name'];
+        $imgContent = addslashes(file_get_contents($image));
+    
+     
+        $nuevoPrecio=$_POST['precio'];
+        $nuevoCategoria=$_POST['categoria'];
 
-    echo "<script>alert('Nuevo producto añadido con éxito!');</script>";
 
-    include_once("web.php");
+        $instruccion = "INSERT INTO productos(id, nombre, precio, imagen, categoria) VALUES ('$id','$nuevoNombre','$nuevoPrecio','$imgContent','$nuevoCategoria')";
+
+        $resultado = mysqli_query($conexion, $instruccion);
+    
+    
+        echo "<script>alert('Nuevo producto añadido con éxito!');</script>";
+    
+        include_once("web.php");
+
+    }else{
+        
+        echo "<h5 class='text-danger'>No se a añadido ningun producto</h5>";
+        include_once("web.php");
+        
+    }
+ 
+
+
+
+
 
 
 ?>
