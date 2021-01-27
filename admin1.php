@@ -31,7 +31,7 @@ else
     $nuevoNombre=$_POST['nombre'];
 
 
-    if($nombre!=""){
+    if($nuevoNombre!=""){
 
         $image = $_FILES['imagen']['tmp_name'];
         $imgContent = addslashes(file_get_contents($image));

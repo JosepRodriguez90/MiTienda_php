@@ -130,18 +130,6 @@ while($fila=mysqli_fetch_array($resultados, MYSQL_ASSOC)){
     </tbody>
     </table>
 	
-    <?php   //funcio i boto per vaciar la cesta de l'usuari.
-
-        function vaciarCesta(){
-            $vaciarcesta="DELETE * FROM cesta WHERE cliente='$nickLog'";
-
-            $resultados=mysqli_query($conexion, $vaciarcesta);
-        }
-
-
-        echo "<button class='btn btn-danger' onClick='vaciarCesta()'>Vaciar Cesta</button>"
-    ?>
-	
 </div>
 
 
