@@ -130,6 +130,10 @@ while($fila=mysqli_fetch_array($resultados, MYSQL_ASSOC)){
     </tbody>
     </table>
 	
+    <form method="post" action="vaciarcesta.php">
+	<input type="submit" value="vaciar">
+    </form>
+	    
 </div>
 
 
