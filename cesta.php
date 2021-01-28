@@ -131,7 +131,7 @@ while($fila=mysqli_fetch_array($resultados, MYSQL_ASSOC)){
     </table>
 	
     <form method="post" action="vaciarcesta.php">
-	<input type="submit" value="vaciar">
+	<input class="btn btn-danger" type="submit" value="vaciar">
     </form>
 	    
 </div>
