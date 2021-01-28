@@ -29,8 +29,11 @@ header("Content-Type: text/html;charset=utf-8");
 
 <?php
 
-$instruccion = "DELETE FROM cesta WHERE cliente='$nickLog';
+$instruccion = "DELETE FROM cesta WHERE cliente='$nickLog'";
 
 $conexion = mysqli_query($conexion, $instruccion);
 
+include_once("cesta.php");
+
 ?>
+

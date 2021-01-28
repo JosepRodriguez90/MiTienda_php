@@ -62,6 +62,7 @@ $precio=$fila[2];
 		WHERE nombre_producto='$nombre' AND cliente='$nickLog'";
 		$resultado = mysqli_query($conexion, $instruccion);
 
+		echo "<script>alert('El producto añadido a la cesta!');</script>";
 	}
 
 	include_once("cesta.php");
